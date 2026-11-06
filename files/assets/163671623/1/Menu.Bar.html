@@ -1,0 +1,43 @@
+<div id="menu-bar">
+    <ul id="menu-items-old">
+        <li class="discord" v-if="!isPoki" v-on:click="joinDiscord()">
+            <img :src="getImage('Discord-Icon-New.png')" class="discord-icon">
+        </li>
+        <li class="settings" v-on:click="goScene('Settings')">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+        </li>
+    </ul>
+    <ul id="menu-items">
+        <!--
+        <li class="venge pass" :class="{'active' : page == 'VengePass'}" v-on:click="goScene('VengePass');">
+            <img :src="getImage('BlackCoin-Icon.png')"> {{translate('VENGE PASS')}}
+            <div class="notification" v-if="vengePassNotification">1</div>
+        </li>
+        -->
+        <li class="match" :class="{'active' : page == 'Home'}" v-on:click="goScene('Menu');">
+            <!--<img :src="getImage('Battle-Icon.png')"> {{translate('MATCH')}}-->
+            {{translate('PLAY')}}
+        </li>
+        <li class="shop" v-on:click="goScene('Shop');">
+            <!--<img :src="getImage('Market-Icon.png')"> {{translate('SHOP')}}-->
+            {{translate('STORE')}}
+        </li>
+        <!--
+        <li class="ranked" :class="{'active' : page == 'Ranked'}" v-on:click="goScene('Ranked');">
+            <img :src="getImage('Battle-Icon.png')"> {{translate('RANKED')}}
+        </li>
+        -->
+        <li class="leaderboard" v-on:click="goScene('Leaderboard');">
+            <!--<img :src="getImage('Crown-Icon.png')"> {{translate('LEADERBOARD')}}-->
+            {{translate('LEADERBOARD')}}
+        </li>
+        <li class="custom" v-on:click="showPopup('MapSelection'); mapTab = 'Parkour'">
+            <!--<img :src="getImage('Battle-Icon.png')"> {{translate('CUSTOM')}}-->
+            {{translate('SANDBOX')}}
+        </li>
+        <li class="account" v-on:click="goScene('Account');">
+            <!--<img :src="getImage('User-Icon.png')"> {{translate('ACCOUNT')}}-->
+            {{translate('ACCOUNT')}}
+        </li>
+    </ul>
+</div>

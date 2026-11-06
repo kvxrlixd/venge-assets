@@ -1,0 +1,76 @@
+
+<div class="field-wrap"> 
+    <div class="field">
+        <div class="label-wrap">
+            <label for="achromatopsia">{{translate('Achromatopsia Filter')}}</label>
+            <label for="achromatopsia">{{translate('(Black-White)')}}</label>
+        </div>
+
+        <div class="form-element-wrap">
+            <div class="field-toggle-wrapper">
+                <input class="toggle" v-on:change="onSettingsChange()" 
+                        type="checkbox" id="achromatopsia"
+                        v-model="settings.achromatopsia">
+                <label for="achromatopsia">
+                    <span v-html="settings.achromatopsia == true ? translate('Yes') : translate('No')"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="label-wrap">
+            <label for="deuteranopia">{{translate('Deuteranopia Filter')}}</label>
+            <label for="deuteranopia">{{translate('(Green-Red)')}}</label>
+        </div>
+
+        <div class="form-element-wrap">
+            <div class="field-toggle-wrapper">
+                <input class="toggle" v-on:change="onSettingsChange()" 
+                type="checkbox" id="deuteranopia"
+                v-model="settings.deuteranopia">
+                <label for="deuteranopia">
+                    <span v-html="settings.deuteranopia == true ? translate('Yes') : translate('No')"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="field-wrap"> 
+    <div class="field">
+        <div class="label-wrap">
+            <label for="protanopia">{{translate('Protanopia Filter')}}</label>
+            <label for="protanopia">{{translate('(Red-Green)')}}</label>
+        </div>
+
+        <div class="form-element-wrap">
+            <div class="field-toggle-wrapper">
+                <input class="toggle" v-on:change="onSettingsChange()" 
+                type="checkbox" id="protanopia"
+                v-model="settings.protanopia">
+                <label for="protanopia">
+                    <span v-html="settings.protanopia == true ? translate('Yes') : translate('No')"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="label-wrap">
+            <label for="tritanopia">{{translate('Tritanopia Filter')}}</label>
+            <label for="tritanopia">{{translate('(Blue-Yellow)')}}</label>
+        </div>
+
+        <div class="form-element-wrap">
+            <div class="field-toggle-wrapper">
+                <input class="toggle" v-on:change="onSettingsChange()" 
+                type="checkbox" id="tritanopia"
+                v-model="settings.tritanopia">
+                <label for="tritanopia">
+                    <span v-html="settings.tritanopia == true ? translate('Yes') : translate('No')"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

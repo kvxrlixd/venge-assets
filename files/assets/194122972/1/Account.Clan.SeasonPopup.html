@@ -1,0 +1,123 @@
+<div v-if="popup.page == 'RankInfo'" class="popup" style="background: linear-gradient(135deg, #0e3662, #2d0d3e); padding: 20px; border-radius: 8px; height: auto; overflow: hidden; text-align: center;">
+    <div class="popup-header" style="font-size: 20px; margin-bottom: 15px; color: white;">
+        <i class="fa fa-trophy" aria-hidden="true"></i> {{translate('Leagues Information')}}
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close" style="float: right; cursor: pointer; color: #fff;">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+    </div>
+
+    <div class="field-wrap" style="margin: 20px 0;">
+        <div class="trophy-section" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+            <div class="trophy-item" style="text-align: center; margin: 10px;">
+                <img :src="getImage('Trophy-Bronze.png')" alt="Bronze Trophy" class="trophy-icon" style="width: 100px; height: auto; margin-bottom: 10px;">
+                <h3 style="color: white;">{{translate('Bronze League')}}</h3>
+                <p style="color: white;">{{translate('TOP 50+ clans')}}</p>
+            </div>
+            <div class="trophy-item" style="text-align: center; margin: 10px;">
+                <img :src="getImage('Trophy-Silver.png')" alt="Silver Trophy" class="trophy-icon" style="width: 100px; height: auto; margin-bottom: 10px;">
+                <h3 style="color: white;">{{translate('Silver League')}}</h3>
+                <p style="color: white;">{{translate('TOP 26 - 50 clans')}}</p>
+            </div>
+            <div class="trophy-item" style="text-align: center; margin: 10px;">
+                <img :src="getImage('Trophy-Gold.png')" alt="Gold Trophy" class="trophy-icon" style="width: 100px; height: auto; margin-bottom: 10px;">
+                <h3 style="color: white;">{{translate('Gold League')}}</h3>
+                <p style="color: white;">{{translate('TOP 11 - 25 clans')}}</p>
+            </div>
+            <div class="trophy-item" style="text-align: center; margin: 10px;">
+                <img :src="getImage('Trophy-Champion.png')" alt="Champion Trophy" class="trophy-icon" style="width: 100px; height: auto; margin-bottom: 10px;">
+                <h3 style="color: white;">{{translate('Champion League')}}</h3>
+                <p style="color: white;">{{translate('TOP 1 - 10 clans')}}</p>
+            </div>
+            <div class="trophy-item" style="text-align: center; margin: 10px;">
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('Progress and complete Clan Quests')}} ✅</p>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('Play and earn clan score')}} ⭐</p>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('And try to get highest Season Clan Leaderboard position to receive better rewards!')}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div v-if="popup.page == 'RewardsInfo'" class="popup" style="background: linear-gradient(135deg, #0e3662, #2d0d3e); padding: 20px; border-radius: 8px; height: auto; overflow: hidden; text-align: center;">
+    <div class="popup-header" style="font-size: 18px; margin-bottom: 10px; color: white;">
+        <i class="fa fa-trophy" aria-hidden="true"></i> {{translate('Clan rewards')}}
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close" style="float: right; cursor: pointer; color: #fff;">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+    </div>
+
+    <div class="field-wrap" style="margin: 10px 0;">
+        <div class="trophy-section" style="display: flex; justify-content: center; align-items: center; flex-wrap: nowrap; overflow-x: auto;">
+            <div class="trophy-item" style="text-align: center; margin: 5px;">
+                <img :src="getImage('Trophy-Silver.png')" alt="Silver Trophy" class="trophy-icon" style="width: 150px; height: auto; margin-bottom: 8px;">
+                <h3 style="color: white; font-size: 14px;">{{translate('TOP 26 - 50 Clans')}}</h3>
+                <div style="width: 100%; height: 1px; background-color: white; margin: 10px 0;"></div>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+1000 VG to all clan members')}}</p>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+5000 VG in clan bank')}}</p>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+10000 Total clan Score')}}</p>
+            </div>
+
+            <div class="trophy-item" style="text-align: center; margin: 5px;">
+                <img :src="getImage('Trophy-Gold.png')" alt="Gold Trophy" class="trophy-icon" style="width: 150px; height: auto; margin-bottom: 8px;">
+                <h3 style="color: white; font-size: 14px;">{{translate('TOP 11 - 25 Clans')}}</h3>
+                <div style="width: 100%; height: 1px; background-color: white; margin: 10px 0;"></div>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+2500 VG to all clan members')}}</p>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+12500 VG in clan bank')}}</p>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+25000 Total clan Score')}}</p>
+            </div>
+
+            <div class="trophy-item" style="text-align: center; margin: 5px;">
+               <div style="position: relative; display: inline-block;">
+                <img :src="getImage('Trophy-Champion.png')" alt="Champion Trophy" class="trophy-icon" style="width: 150px; height: auto; margin-bottom: 8px;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -95%); font-size: 40px; font-weight: bold; 
+                    background: linear-gradient(to right, #ff9900, #ffff00, #33ff33, #00ccff);
+                    -webkit-background-clip: text;
+                    color: transparent;
+                    -webkit-text-stroke: 2.5px rgb(0,0,0,30%);">
+                    10
+                </div>
+            </div>
+                <h3 style="color: white; font-size: 14px;">{{translate('TOP 6 - 10 Clans')}}</h3>
+                <div style="width: 100%; height: 1px; background-color: white; margin: 10px 0;"></div>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+5000 VG to all clan members')}}</p>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+25000 VG in clan bank')}}</p>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+50000 Total clan Score')}}</p>
+            </div>
+
+            <div class="trophy-item" style="text-align: center; margin: 5px;">
+               <div style="position: relative; display: inline-block;">
+                <img :src="getImage('Trophy-Champion.png')" alt="Champion Trophy" class="trophy-icon" style="width: 150px; height: auto; margin-bottom: 8px;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -95%); font-size: 40px; font-weight: bold; 
+                    background: linear-gradient(to right, #ffff00, #33ff33, #00ccff);
+                    -webkit-background-clip: text;
+                    color: transparent;
+                    -webkit-text-stroke: 2.5px rgb(0,0,0,30%);">
+                    5
+                </div>
+            </div>
+                <h3 style="color: white; font-size: 14px;">{{translate('🏆 TOP 2 - 5 Clans 🏆')}}</h3>
+                <div style="width: 100%; height: 1px; background-color: white; margin: 10px 0;"></div>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+7500 VG to all clan members')}}</p>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+37500 VG in clan bank')}}</p>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+75000 Total clan Score')}}</p>
+            </div>
+            
+            <div class="trophy-item" style="text-align: center; margin: 5px;">
+               <div style="position: relative; display: inline-block;">
+                <img :src="getImage('Trophy-Champion.png')" alt="Champion Trophy" class="trophy-icon" style="width: 150px; height: auto; margin-bottom: 8px;">
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -95%); font-size: 40px; font-weight: bold; 
+                    background: linear-gradient(to right, #ffff00, #33ff33, #00ccff);
+                    -webkit-background-clip: text;
+                    color: transparent;
+                    -webkit-text-stroke: 2.5px rgb(0,0,0,30%);">
+                    1
+                </div>
+            </div>
+                <h3 style="color: white; font-size: 14px;">{{translate('👑 TOP 1 Clan 👑')}}</h3>
+                <div style="width: 100%; height: 1px; background-color: white; margin: 10px 0;"></div>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+10000 VG to all clan members')}}</p>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+50000 VG in clan bank')}}</p>
+                <p style="color: white; font-size: 12px; margin: 3px 0;">{{translate('+100000 Total clan Score')}}</p>
+            </div>
+        </div>
+    </div>
+</div>

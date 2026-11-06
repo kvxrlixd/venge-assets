@@ -1,0 +1,136 @@
+<div class="field-wrap"> 
+    
+    <div class="field">
+        <div class="label-wrap">
+            <label for="adsSensivity">{{translate('Aim Down Sight Sensivity')}}</label>
+        </div>
+        
+        <div class="form-element-wrap">
+            <div class="input-slider-wrapper">
+                <div class="input-slider-text">
+                    {{settings.adsSensivity}}
+                </div>
+                
+                <input id="adsSensivity" v-on:change="onSettingsChange()" 
+                    type="range" min="0" max="200" 
+                    v-model="settings.adsSensivity">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="field">
+        <div class="label-wrap">
+            <label for="sensivity">{{translate('Mouse Sensivity')}}</label>
+        </div>
+        
+        <div class="form-element-wrap">
+            <div class="input-slider-wrapper">
+                <div class="input-slider-text">
+                    {{settings.sensivity}}
+                </div>
+                
+                <input id="sensivity" v-on:change="onSettingsChange()" 
+                    type="range" min="0" max="200" 
+                    v-model="settings.sensivity">
+            </div>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="label-wrap">
+            <label for="invertMouse">{{translate('Invert Mouse (Vertical Axis)')}}</label>
+        </div>
+
+        <div class="form-element-wrap">
+            <div class="field-toggle-wrapper">
+                <input class="toggle" v-on:change="onSettingsChange()" 
+                type="checkbox" id="invertMouse"
+                v-model="settings.invertMouse">
+                <label for="invertMouse">
+                    <span v-html="settings.invertMouse == true ? translate('Yes') : translate('No')"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="field-wrap">
+        <div class="field">
+        <div class="label-wrap">
+            <label for="disableScrollSwitch">{{translate('Disable Weapon switch when Scrolling')}}</label>
+        </div>
+
+        <div class="form-element-wrap">
+            <div class="field-toggle-wrapper">
+                <input class="toggle" v-on:change="onSettingsChange()" 
+                type="checkbox" id="disableScrollSwitch"
+                v-model="settings.disableScrollSwitch">
+                <label for="disableScrollSwitch">
+                    <span v-html="settings.disableScrollSwitch == true ? translate('Yes') : translate('No')"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="label-wrap">
+            <label for="enableHighPollingRateFix">{{translate('Enable High Polling Rate Support')}}</label>
+        </div>
+
+        <div class="form-element-wrap">
+            <div class="field-toggle-wrapper">
+                <input class="toggle" v-on:change="onSettingsChange()" 
+                type="checkbox" id="enableHighPollingRateFix"
+                v-model="settings.enableHighPollingRateFix">
+                <label for="enableHighPollingRateFix">
+                    <span v-html="settings.enableHighPollingRateFix == true ? translate('Yes') : translate('No')"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="label-wrap">
+            <label for="inputDelayFixBeta">{{translate('(Beta) Decrease Input Delay')}}</label>
+        </div>
+
+        <div class="form-element-wrap">
+            <div class="field-toggle-wrapper">
+                <input class="toggle" v-on:change="onSettingsChange()" 
+                type="checkbox" id="inputDelayFixBeta"
+                v-model="settings.inputDelayFixBeta">
+                <label for="inputDelayFixBeta">
+                    <span v-html="settings.inputDelayFixBeta == true ? translate('Yes') : translate('No')"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="controls-table" class="table-list-style pull-right">
+    <ul class="table-list-header">
+        <li>{{translate('Function')}}</li>
+        <li>{{translate('Key')}}</li>
+        <li>{{translate('Action')}}</li>
+    </ul>
+    
+    <ul class="table-list-content">
+        <li v-for="item in keyboardConfiguration">
+            <div class="list">
+                <span v-if="!item.waiting">{{translate(item.function)}}</span>{{item.waiting ? translate('PRESS ANY KEY...') : ''}}
+            </div>
+
+            <div class="list">
+                <p v-on:click="updateKeyboardBind(item)" class="keyboard-key">{{item.key}}</p>
+            </div>
+
+            <div class="list">
+                <button v-on:click="resetKeyboardBind(item)" class="table-button secondary-button" type="button">{{translate('Reset')}}</button>
+                <button v-on:click="updateKeyboardBind(item)" class="table-button" type="button">{{translate('Update')}}</button>
+            </div>
+        </li>
+    </ul>
+</div>

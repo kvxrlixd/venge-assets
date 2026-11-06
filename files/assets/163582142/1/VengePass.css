@@ -1,0 +1,11 @@
+@import "Menu.css";
+@import "Common.css";
+@import "Table.css";
+@import "Menu.Bar.css";
+@import "Form.css";
+@import "Popup.css";
+@import "Shop.css";
+
+#wrapper{
+    background-color: transparent;
+}

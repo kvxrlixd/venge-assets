@@ -1,0 +1,36 @@
+{
+    "header": {
+        "version": 1
+    },
+    "data": [
+        {
+            "info": {
+                "locale": "DE"
+            },
+            "messages": {
+                "Get Premium": "Premium erhalten",
+                "Quests": "Quests",
+                "Season 1 - Summer Vibes": "Saison 1 - Sommer Vibes",
+                "Free": "Kostenlos",
+                "Zoom in": "Vergrößern",
+                "Zoom out": "Verkleinern",
+                "Venge Premium": "Venge Premium",
+                "Premium Reward": "Premium Belohnung",
+                "Premium Pass": "Premium Pass",
+                "Uncommon": "Ungewöhnlich",
+                "Common": "Gewöhnlich",
+                "Rare": "Selten",
+                "Legendary": "Legendär",
+                "Mythical": "Mythisch",
+                "VG coins have been claimed!": "VG Münzen wurden beansprucht!",
+                "Stars": "Sterne",
+                "Locked": "Gesperrt",
+                "Claimed!": "Beansprucht!",
+                "Equiped!": "Ausgerüstet!",
+                "Equip": "Ausrüsten",
+                "EndsInText1": "Endet in",
+                "EndsInText2": "Tagen"
+            }
+        }
+    ]
+}

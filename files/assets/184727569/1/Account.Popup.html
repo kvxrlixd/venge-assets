@@ -1,0 +1,149 @@
+<div v-if="popup.page == 'DeleteClan'" class="popup">
+    <div class="popup-header">
+        <i class="fa fa-cube" aria-hidden="true"></i> {{translate('Verify this action')}}
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="field-wrap login-form">
+        <div class="field">
+            <div class="form-element-wrap">
+                <label>{{translate('Verification Code')}}</label>
+                <input v-model="form.verificationCode" type="text" placeholder="">
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-item-details">
+            <div id="popup-text-details">
+                <li>
+                    <label>{{translate('Verification Code sent to this email')}}:</label>
+                    <div class="rarities-wrapper">
+                        <span>{{popup.message}}</span>
+                    </div>
+                </li>
+                <li>
+                    <label>{{translate('Verification Code will expire in')}}:</label>
+                    <div class="rarities-wrapper">
+                        <span>{{translate('15 mins')}}</span>
+                    </div>
+                </li>
+            </div>
+        </div>
+
+    <div class="popup-bottom-content right-align">
+        <div 
+            v-if="alert.active"
+            class="alert"
+            :class="{'alert-danger' : alert.type == 'danger', 'alert-info' : alert.type == 'info'}"
+        >
+            <i v-if="alert.type == 'danger'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+            <i v-if="alert.type == 'info'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+            {{alert.message}}
+        </div>
+
+        <button class="btn btn-primary button-sound" v-on:click="deleteClan()">
+            <i class="fa fa-unlock" aria-hidden="true"></i> {{popup.confirm}}
+            <i class="fa fa-caret-right" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+
+<div v-if="popup.page == 'TrasferClanOwnership'" class="popup">
+    <div class="popup-header">
+        <i class="fa fa-cube" aria-hidden="true"></i> {{translate('Verify this action')}}
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="field-wrap login-form">
+        <div class="field">
+            <div class="form-element-wrap">
+                <label>{{translate('Verification Code')}}</label>
+                <input v-model="form.verificationCode" type="text" placeholder="">
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-item-details">
+            <div id="popup-text-details">
+                <li>
+                    <label>{{translate('You are transferting clan ownership to')}}:</label>
+                    <div class="rarities-wrapper">
+                        <span>{{popup.message}}</span>
+                    </div>
+                </li>
+                <li>
+                    <label>{{translate('Verification Code will expire in')}}:</label>
+                    <div class="rarities-wrapper">
+                        <span>{{translate('15 mins')}}</span>
+                    </div>
+                </li>
+            </div>
+        </div>
+
+    <div class="popup-bottom-content right-align">
+        <div 
+            v-if="alert.active"
+            class="alert"
+            :class="{'alert-danger' : alert.type == 'danger', 'alert-info' : alert.type == 'info'}"
+        >
+            <i v-if="alert.type == 'danger'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+            <i v-if="alert.type == 'info'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+            {{alert.message}}
+        </div>
+
+        <button class="btn btn-primary button-sound" v-on:click="trasferClanOwnership()">
+            <i class="fa fa-unlock" aria-hidden="true"></i> {{popup.confirm}}
+            <i class="fa fa-caret-right" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>
+
+<div v-if="popup.page == 'SaveAccountSettings'" class="popup">
+    <div class="popup-header">
+        <i class="fa fa-cube" aria-hidden="true"></i> Verify this action
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="field-wrap login-form">
+        <div class="field">
+            <div class="form-element-wrap">
+                <label>{{translate('Verification Code')}}</label>
+                <input v-model="form.verificationCode" type="text" placeholder="">
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-item-details">
+            <div id="popup-text-details">
+                <li>
+                    <label>You are going to change:</label>
+                    <div class="rarities-wrapper">
+                        <span>{{popup.message}}</span>
+                    </div>
+                </li>
+                <li>
+                    <label>Veriftication Code will expire in:</label>
+                    <div class="rarities-wrapper">
+                        <span>15 mins</span>
+                    </div>
+                </li>
+            </div>
+        </div>
+
+    <div class="popup-bottom-content right-align">
+        <div 
+            v-if="alert.active"
+            class="alert"
+            :class="{'alert-danger' : alert.type == 'danger', 'alert-info' : alert.type == 'info'}"
+        >
+            <i v-if="alert.type == 'danger'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+            <i v-if="alert.type == 'info'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+            {{alert.message}}
+        </div>
+
+        <button class="btn btn-primary button-sound" v-on:click="setProfileSettings()">
+            <i class="fa fa-unlock" aria-hidden="true"></i> {{popup.confirm}}
+            <i class="fa fa-caret-right" aria-hidden="true"></i>
+        </button>
+    </div>
+</div>

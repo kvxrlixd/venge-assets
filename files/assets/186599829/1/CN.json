@@ -1,0 +1,36 @@
+{
+    "header": {
+        "version": 1
+    },
+    "data": [
+        {
+            "info": {
+                "locale": "CN"
+            },
+            "messages": {
+                "Get Premium": "获得高级版",
+                "Quests": "任务",
+                "Season 1 - Summer Vibes": "第1季 - 夏日氛围",
+                "Free": "免费",
+                "Zoom in": "放大",
+                "Zoom out": "缩小",
+                "Venge Premium": "复仇高级版",
+                "Premium Reward": "高级奖励",
+                "Premium Pass": "高级通行证",
+                "Uncommon": "罕见",
+                "Common": "普通",
+                "Rare": "稀有",
+                "Legendary": "传奇",
+                "Mythical": "神话",
+                "VG coins have been claimed!": "VG币已领取！",
+                "Stars": "星星",
+                "Locked": "已锁定",
+                "Claimed!": "已领取！",
+                "Equiped!": "已装备！",
+                "Equip": "装备",
+                "EndsInText1": "结束于",
+                "EndsInText2": "天"
+            }
+        }
+    ]
+}

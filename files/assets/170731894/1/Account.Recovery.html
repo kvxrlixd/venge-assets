@@ -1,0 +1,29 @@
+<form action="javascript:;" class="wide">
+    <div class="field-wrap login-form">
+        <img class="login-form-img" :src="getImage('Logo.png')" alt="">
+
+        <div class="field">
+            <div class="label-wrap">
+                <label>{{translate('Username')}}</label>
+            </div>
+
+            <div class="form-element-wrap">
+                 <input v-model="form.username" type="text" placeholder="">
+            </div>
+        </div>
+    </div>
+
+    <div class="field-wrap" v-show="!loading">
+        <div class="account-box-wrap">
+            <div class="account-left-box">
+                <p class="tos-text">Account recovery</p>
+                <p v-if="!isPoki" class="tos-text mini-info">{{translate('You can find more about our')}} <a target="_blank" href="https://venge.io/privacy.txt"><u>{{translate('privacy policy here')}}</u>.</a> </p>
+                <p v-on:click="recovery_page()" class="forgot-password-button" style="cursor: pointer;"><u>{{translate('Back to login page')}}</u></p>
+            </div>
+            
+            <div class="account-button-box">
+                <button v-on:click="password_recovery()" class="btn btn-primary">{{translate('Recovery')}}</button>
+            </div>
+        </div>
+    </div>
+</form>

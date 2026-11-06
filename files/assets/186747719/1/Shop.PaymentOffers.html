@@ -1,0 +1,137 @@
+<div v-if="popup.page == 'PaymentOffers'" class="popup" style="height: 425px;">
+    <div class="popup-header">
+        <i class="fa fa-cube" aria-hidden="true"></i> {{translate('Buy Venge Platinum coins')}} (VP)
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+
+    <div id="content" :class="{'focused' : isFocused}">
+        <ul class="item-wrapper">
+            <li v-for="item in paymentOffers" class="item" style="height: 200px; background: radial-gradient(circle, rgba(0,120,255,1) 0%, rgba(0,0,0,1) 100%);" v-on:click="buyVP(item.value)" v-on:mouseover="isFocused = true" v-on:mouseleave="isFocused = false">
+                <img class="item-thumbnail" style="width: 80%;" :src="'https://assets.venge.io/' + item.thumbnail" alt="Item Thumbnail">
+                <span class="item-price">
+                    <span class="price-value"><img class="coin-icon" :src="getImage('Coin-Icon.png')" alt="Coin Icon"> {{item.name}}</span>
+                </span>
+                <div class="item-header">
+                    <span class="title">{{item.price}}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="popup-bottom-content right-align">
+        <div 
+            v-if="alert.active"
+            class="alert"
+            :class="{'alert-danger' : alert.type == 'danger', 'alert-info' : alert.type == 'info'}"
+        >
+            <i v-if="alert.type == 'danger'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+            <i v-if="alert.type == 'info'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+            {{alert.message}}
+        </div>
+        
+        <p v-on:click="showPopup('GiftVP')" class="forgot-password-button" style="cursor: pointer; color: white;">{{translate('You can also gift VP coins to your friend')}} <u style="color:rgb(95, 138, 253);">{{translate('Click here')}}!</u></p>
+
+        <span v-if="!isLoggedIn"> 
+            <button class="btn btn-secondary button-sound" v-on:click="goLogin('Account')">
+                <i class="fa fa-user" aria-hidden="true"></i> {{translate('You Need to Login')}} 
+            </button>
+        </span>
+    </div>
+</div>
+
+<div v-if="popup.page == 'VisitVenge'" class="popup" style="height: 365px;">
+    <div class="popup-header">
+        <i class="fa fa-cube" aria-hidden="true"></i> {{translate('Error')}}
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="popup-content">
+        <img src="https://assets.venge.io/Venge-Season-1-Loading-Screen-2.jpg" style="width: 100%; height: 100%;" />
+        <div class="centered-text" style="position: absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);text-align: center; color: white; font-size: 24px; background-color: rgba(0, 0, 0, 0); padding: 10px;">
+            You can not use this feature here!
+        </div>
+    </div>
+
+    <div class="popup-bottom-content right-align">
+        <a href="https://venge.io" target="_blank" class="btn btn-primary button-sound">
+            Visit Venge.io
+        </a>
+    </div>
+</div>
+
+<div v-if="popup.page == 'GiftVP'" class="popup" style="height: 365px;">
+    <div class="popup-header">
+        <i class="fa fa-cube" aria-hidden="true"></i> {{translate('Error')}}
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="field-wrap login-form">
+        <div class="field">
+            <div class="form-element-wrap">
+                <label>{{translate('Gift Receiver Username')}}</label>
+                <input v-model="form.usernameGiftVP" type="text" placeholder="">
+            </div>
+        </div>
+    </div>
+
+    <span v-if="isLoggedIn">
+        <button class="btn btn-primary button-sound" v-on:click="getGiftPaymentOffers()">
+            {{translate('Continue')}}
+            <i class="fa fa-caret-right" aria-hidden="true"></i>
+        </button>
+
+        <div id="popup-item-details">
+            <div id="popup-text-details">
+                <li>
+                    <label style="width: 300px">{{translate('Enter player username higher')}}</label>
+                    <div class="rarities-wrapper">
+                        <span>{{translate('You are going to purchase VP coins for other player')}}!</span>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </span>
+</div>
+
+<div v-if="popup.page == 'GiftPaymentOffers'" class="popup" style="height: 425px;">
+    <div class="popup-header">
+        <i class="fa fa-cube" aria-hidden="true"></i> Gift Venge Platinum Coins to {{form.usernameGiftVP}}
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+
+    <div id="content" :class="{'focused' : isFocused}">
+        <ul class="item-wrapper">
+            <li v-for="item in paymentOffers" class="item" style="height: 200px; background: radial-gradient(circle, rgba(0,120,255,1) 0%, rgba(0,0,0,1) 100%);" v-on:click="giftVP(item.value)" v-on:mouseover="isFocused = true" v-on:mouseleave="isFocused = false">
+                <img class="item-thumbnail" style="width: 80%;" :src="'https://assets.venge.io/' + item.thumbnail" alt="Item Thumbnail">
+                <span class="item-price">
+                    <span class="price-value"><img class="coin-icon" :src="getImage('Coin-Icon.png')" alt="Coin Icon"> {{item.name}}</span>
+                </span>
+                <div class="item-header">
+                    <span class="title">{{item.price}}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="popup-bottom-content right-align">
+        <div 
+            v-if="alert.active"
+            class="alert"
+            :class="{'alert-danger' : alert.type == 'danger', 'alert-info' : alert.type == 'info'}"
+        >
+            <i v-if="alert.type == 'danger'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+            <i v-if="alert.type == 'info'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+            {{alert.message}}
+        </div>
+
+       <div id="popup-text-details">
+            <li>
+                <label style="width=300px">Gift to {{form.usernameGiftVP}} [Level {{form.levelGiftVP}}]</label>
+                <div class="rarities-wrapper">
+                    <span>This player will get VP after you purchase it. Select VP package</span>
+                </div>
+            </li>
+        </div>
+    </div>
+</div>
+       

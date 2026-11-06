@@ -1,0 +1,36 @@
+{
+    "header": {
+        "version": 1
+    },
+    "data": [
+        {
+            "info": {
+                "locale": "TR"
+            },
+            "messages": {
+                "Get Premium": "Premium Al",
+                "Quests": "Görevler",
+                "Season 1 - Summer Vibes": "Sezon 1 - Yaz Vibes",
+                "Free": "Ücretsiz",
+                "Zoom in": "Yakınlaştır",
+                "Zoom out": "Uzaklaştır",
+                "Venge Premium": "Venge Premium",
+                "Premium Reward": "Premium Ödül",
+                "Premium Pass": "Premium Geçiş",
+                "Uncommon": "Nadir",
+                "Common": "Sık",
+                "Rare": "Nadir",
+                "Legendary": "Efsanevi",
+                "Mythical": "Mistik",
+                "VG coins have been claimed!": "VG paraları alındı!",
+                "Stars": "Yıldızlar",
+                "Locked": "Kilitli",
+                "Claimed!": "Alındı!",
+                "Equiped!": "Donatıldı!",
+                "Equip": "Donat",
+                "EndsInText1": "Biter",
+                "EndsInText2": "gün içinde"
+            }
+        }
+    ]
+}

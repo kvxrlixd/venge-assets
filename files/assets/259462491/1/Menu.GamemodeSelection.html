@@ -1,0 +1,57 @@
+<div v-if="popup.page == 'GameModeSelection'" id="gamemode-selection" class="popup">
+    <div class="popup-header">
+        {{translate('GameModeSelectionTitle')}}
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="popup-content">
+        <div class="popup-side-menu">
+            <li v-on:click="mapTab = 'Official'" :class="{'active' : mapTab == 'Official'}"><i class="fa fa-asterisk" aria-hidden="true"></i> {{translate('OfficialMaps')}}</li>
+            <li v-on:click="mapTab = 'Practice'" :class="{'active' : mapTab == 'Practice'}"><i class="fa fa-search" aria-hidden="true"></i> {{translate('Practice')}}</li>
+            <a v-on:click="clearMapSelection()" class="popup-bottom" :class="{'popup-bottom-active' : selectedMaps.length > 0}" href="javascript:;"><i class="fa fa-times" aria-hidden="true"></i> {{translate('ClearGamemodeSelection')}} ({{selectedMaps.length}})</a>
+        </div>
+        <div class="popup-side-content" :class="{'popup-no-scroll' : popup.loading}">
+            <div v-if="popup.loading" class="popup-loading">
+                <div id="spinner-center">
+                    <div class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="field" v-if="!isPlayCanvasBuild">
+                <label>{{translate('ServerRegion')}}</label>
+
+                <select class="half-option" v-model="country" v-on:change="changeCountry()">
+                    <option value="EU">{{translate('EU')}} - {{regions.EU}} online</option>
+                    <option value="NA">{{translate('NA')}} - {{regions.NA}} online</option>
+                    <option value="AS">{{translate('AS')}} - {{regions.AS}} online</option>
+                    <option value="AU">{{translate('AU')}} - {{regions.AU}} online</option>
+                    <option value="SA">{{translate('SA')}} - {{regions.SA}} online</option>
+                </select>
+            </div>
+
+            <div v-if="mapTab == 'Search'" class="search-bar">
+                <input id="search-box" placeholder="Sniper, parkour eg." v-on:keyup.enter="searchCustomMap()" type="search" v-model="form.search">
+                <button v-on:click="searchCustomMap()">{{translate('Search')}} <i class="fa fa-search"></i></button>
+            </div>
+
+            <div class="gamemode-selection">
+                <li v-if="mapTab != 'Offline'" v-on:click="selectMap(map)" v-for="map in maps" :class="{'active' : isActiveMap(map)}">
+                    <span class="online" v-if="getOnlineUsersByGamemode(map.name)">{{getOnlineUsersByGamemode(map.name)}} Online</span>
+                    <img :src="'https://maps.venge.io/' + map.name + '-512x.jpg?v=1'">
+                    <b>{{map.name}}</b>
+                    <div class="description">
+                        <!--<span class="mode">{{map.mode}}</span>-->{{map.description}}
+                    </div>
+                    <span class="active-check">
+                        <i class="fa fa-check-square-o check" aria-hidden="true"></i>
+                        <i class="fa fa-square-o uncheck" aria-hidden="true"></i>
+                    </span>
+                </li>
+            </div>
+        </div>
+    </div>
+</div>

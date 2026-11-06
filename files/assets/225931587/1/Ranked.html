@@ -1,0 +1,142 @@
+<div id="ranked-menu" class="wrapper">
+    <div id="header-section">
+        <div class="header-left-wrap">
+            <span v-on:click="goBack()" class="back-button">
+                <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>
+            </span>
+            <span class="header-title">
+                {{translate('RANKED')}}
+            </span>
+        </div>
+    </div>
+    
+    <div id="content-section">
+        <!-- Alert message -->
+        <div class="alert" v-if="alert.active" v-bind:class="{ 'alert-info': alert.type === 'info', 'alert-danger': alert.type === 'danger' }">
+            <i class="fa" v-bind:class="{ 'fa-info-circle': alert.type === 'info', 'fa-exclamation-triangle': alert.type === 'danger' }" aria-hidden="true"></i> 
+            {{ alert.message }}
+        </div>
+        
+        <!-- Player profile and season info -->
+        <div class="ranked-header">
+            <div class="player-rank-card">
+                <span class="rank-text" style="font-size: 50px; padding-right: 10px;">💎</span>
+                <div class="rank-info">
+                    <h3>{{ playerRank.name }}</h3>
+                    <div class="trophy-count">
+                        <div class="trophy-icon"><i class="fa fa-trophy" aria-hidden="true"></i></div>
+                        <span>{{ playerRank.trophies }}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="season-banner" v-on:click="showPopup('SeasonRewards')">
+                <div class="season-title">
+                    <h3>SEASON 1</h3>
+                    <span>COMING SOON...</span>
+                </div>
+                <div class="season-button">
+                    <i class="fa fa-trophy" aria-hidden="true"></i>
+                    <span>REWARDS</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ranked mode selection -->
+        <div class="ranked-modes">
+            <div class="ranked-mode-card" v-for="(mode, index) in rankedModes" :key="index">
+                <div class="coming-soon">
+                    <h3>Season 1 is</h3>
+                    <p>COMING SOON...</p>
+                </div>
+                <div class="mode-header">
+                    <div class="mode-icon">
+                        <span class="mode-text" style="font-size: 20px;">{{ mode.name }}</span>
+                    </div>
+                    <div class="mode-title">
+                        <h3>{{ mode.name }}</h3>
+                        <span>{{ mode.players }} PLAYERS</span>
+                    </div>
+                </div>
+                <div class="mode-description">
+                    <p>{{ mode.description }}</p>
+                </div>
+                <div class="mode-actions">
+                    <button class="btn-play" v-on:click="joinQueue(mode.name)">
+                        JOIN QUEUE
+                    </button>
+                    <button class="btn-leaderboard" v-on:click="showLeaderboard(mode.name)">
+                        <i class="fa fa-trophy" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div v-if="popup.active" class="shadow" v-on:click="closePopup()"></div>
+    
+    <!-- Leaderboard Popup -->
+    <div id="leaderboard" class="popup" v-if="popup.active && popup.page === 'Leaderboard'">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>LEADERBOARD</h2>
+                <a href="javascript:;" v-on:click="closePopup()" class="close-button">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+            </div>
+            
+            <div class="leaderboard-mode-tabs">
+                <a href="javascript:;" v-bind:class="{ active: leaderboardMode === '1v1' }" v-on:click="leaderboardMode = '1v1'">1v1</a>
+                <a href="javascript:;" v-bind:class="{ active: leaderboardMode === '2v2' }" v-on:click="leaderboardMode = '2v2'">2v2</a>
+                <a href="javascript:;" v-bind:class="{ active: leaderboardMode === '3v3' }" v-on:click="leaderboardMode = '3v3'">3v3</a>
+            </div>
+            
+            <div class="leaderboard-table">
+                <div class="leaderboard-header">
+                    <span class="rank">#</span>
+                    <span class="name">PLAYER</span>
+                    <span class="trophies">TROPHIES</span>
+                </div>
+                
+                <div class="leaderboard-list">
+                    <div class="leaderboard-row" v-for="(player, index) in leaderboardPlayers" :key="index">
+                        <span class="rank" v-bind:class="'rank-' + (index + 1)">{{ index + 1 }}</span>
+                        <span class="name">{{ player.name }}</span>
+                        <span class="trophies">{{ player.trophies }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Season Rewards Popup -->
+    <div id="season-rewards" class="popup" v-if="popup.active && popup.page === 'SeasonRewards'">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>SEASON 1 REWARDS</h2>
+                <a href="javascript:;" v-on:click="closePopup()" class="close-button">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+            </div>
+            
+            <div class="season-info">
+                <div class="season-time">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <span>COMING SOON...</span>
+                </div>
+                
+                <div class="reward-tiers">
+                    <div class="reward-tier" v-for="(reward, index) in seasonRewards" :key="index">
+                        <div class="reward-trophy-req">
+                            <div class="trophy-icon"><i class="fa fa-trophy" aria-hidden="true"></i></div>
+                            <span>{{ reward.requirement }}</span>
+                        </div>
+                        <div class="reward-item">
+                            <span>{{ reward.name }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+
+<div v-if="popup.page == 'Code'" class="popup">
+    <div class="popup-header">
+        <i class="fa fa-cube" aria-hidden="true"></i> {{translate('Redeem your reward')}}
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="field-wrap login-form">
+        <div class="field">
+            <div class="form-element-wrap">
+                <label>{{translate('Code')}}</label>
+                <input v-model="form.code" type="text" placeholder="">
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-item-details">
+        <div id="popup-text-details">
+            <li>
+                <label>{{translate('How do I get codes')}}?</label>
+                <div class="rarities-wrapper">
+                    <span>{{translate('Join giveaways in our discord server!')}}!</span>
+                </div>
+            </li>
+            <li>
+                <label>{{translate('What can be in code')}}?</label>
+                <div class="rarities-wrapper">
+                    <span>{{translate('VG, VP, Skins and more!')}}</span>
+                </div>
+            </li>
+        </div>
+    </div>
+
+    <div class="popup-bottom-content right-align">
+        <div 
+            v-if="alert.active"
+            class="alert"
+            :class="{'alert-danger' : alert.type == 'danger', 'alert-info' : alert.type == 'info'}"
+        >
+            <i v-if="alert.type == 'danger'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+            <i v-if="alert.type == 'info'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+            {{alert.message}}
+        </div>
+
+        <span v-if="isLoggedIn">
+            <button class="btn btn-primary button-sound" v-on:click="useCode()">
+                <i class="fa fa-unlock" aria-hidden="true"></i> {{translate('Use Code')}}
+                <i class="fa fa-caret-right" aria-hidden="true"></i>
+            </button>
+        </span>
+
+        <span v-if="!isLoggedIn"> 
+            <button class="btn btn-secondary button-sound" v-on:click="goLogin('Account')">
+                <i class="fa fa-user" aria-hidden="true"></i> {{translate('You Need to Login')}} 
+            </button>
+        </span>
+    </div>
+</div>

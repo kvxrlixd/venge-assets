@@ -1,0 +1,106 @@
+<div class="field-wrap">
+
+    <div class="field">
+        <div class="label-wrap">
+            <label for="text">{{translate('Select Emoji')}}</label>
+        </div>
+
+        <div class="form-element-wrap">
+             <select name="emoji" id="emoji" v-model="emoji.selected" v-on:change="setEmoji()">
+                <option
+                        v-for="item in emoji.list" 
+                        :value="item.value">
+                        {{item.text}}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="label-wrap">
+            <label for="showPremium">{{translate('Premium Benefits (Premium required)')}}</label>
+        </div>
+        
+        <div class="form-element-wrap">
+            <div class="field-toggle-wrapper">
+                <input class="toggle" v-on:change="onSettingsChange()" 
+                        type="checkbox" id="showPremium"
+                        v-model="settings.showPremium">
+                <label for="showPremium">
+                    <span v-html="settings.showPremium == true ? translate('Yes') : translate('No')"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="label-wrap">
+            <label for="streamerMode">{{translate('Hide Player Information (Verified required)')}}</label>
+        </div>
+        
+        <div class="form-element-wrap">
+            <div class="field-toggle-wrapper">
+                <input class="toggle" v-on:change="onSettingsChange()" 
+                        type="checkbox" id="streamerMode"
+                        v-model="settings.streamerMode">
+                <label for="streamerMode">
+                    <span v-html="settings.streamerMode == true ? translate('Yes') : translate('No')"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="field-wrap col-wrap mobile-fix">
+
+    <div class="field">
+        <div class="label-wrap">
+            <label for="password">{{translate('New Password')}}</label>
+        </div>
+
+        <div class="form-element-wrap">
+            <input type="password" id="password" :placeholder="translate('Password')" v-model="form.newPassword">
+        </div>
+    </div>
+    
+    <div class="field">
+    <div class="label-wrap">
+        <label for="email">{{ translate('E-mail') }}</label>
+    </div>
+
+    <div class="form-element-wrap">
+        <input
+        :type="isEmailVisible ? 'text' : 'password'"
+        id="email"
+        :placeholder="translate('E-mail')"
+        v-model="form.email"
+        @focus="revealEmail"
+        @blur="hideEmail"
+        >
+    </div>
+    </div>
+
+    <div class="field with-input-text">
+        <div class="label-wrap">
+            <label for="twitchUsername">{{translate('Twitch Username')}}</label>
+        </div>
+        
+        <div class="form-element-wrap">
+            <div class="with-text-wrapper">
+                <input type="text" id="twitchUsername" placeholder="Venge" v-model="form.twitchUsername">
+                <span class="input-text">https://twitch.tv/</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="field button-wrap">
+        <button type="button" class="btn btn-primary" v-on:click="verificationSetProfileSettings()">
+            {{translate('Update')}}
+            <img :src="getImage('Caret-Icon.png')" alt="">
+        </button>
+    </div>
+
+</div>
+
+
+

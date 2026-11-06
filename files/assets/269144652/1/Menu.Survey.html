@@ -1,0 +1,36 @@
+<div v-if="popup.page == 'Survey'" id="daily-reward" class="popup">
+    <div class="popup-header">
+        {{translate('HELP VENGE.IO 🙏')}}
+        <a v-on:click="closePopup()" href="javascript:;" class="popup-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+    </div>
+    <div class="popup-content popup-clickable">
+        <div class="popup-side-content full-side" :class="{'popup-no-scroll' : popup.loading}">
+            <div class="daily-reward-wrapper" style="background: radial-gradient(circle, rgb(68, 0, 114) 0%, rgba(34,34,34,1) 100%);">
+                <div class="survey-header" style="padding-top: 40px; text-shadow: 0px 2px 30px rgb(0, 0, 0);">
+                    <h1>{{ translate('You have been selected to participate in an anonymous survey') }}</h1>
+                    <h2>{{ translate('This survey is designed to gather your feedback, opinions, and overall impressions of your experience.') }}</h2>
+                    <br>
+                    <h2>{{ translate('Your responses will help us better understand what works well, what can be improved, and how we can continue to enhance the overall experience for all players.')}}</h2>
+                    <br>
+                    <h2>{{ translate('The survey is completely anonymous, and your honest feedback is greatly appreciated.')}}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup-bottom-content">
+            <div 
+                v-if="alert.active"
+                class="alert"
+                :class="{'alert-danger' : alert.type == 'danger', 'alert-info' : alert.type == 'info'}"
+            >
+                <i v-if="alert.type == 'danger'" class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
+                <i v-if="alert.type == 'info'" class="fa fa-exclamation-circle" aria-hidden="true"></i> 
+                {{alert.message}}
+            </div>
+
+            <button v-on:click="openSurvey()" class="btn btn-yellow button-sound">
+                {{translate('PARTICIPATE IN SURVEY ❤️')}}
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<div v-if="popup.page == 'Invite'" id="invite-popup" class="popup">
+    <div class="popup-header">
+        <i class="fa fa-user-plus" aria-hidden="true"></i> {{translate('InvitePageTitle')}}
+        <a v-on:click="closeInvite(), closePopup()" href="javascript:;" class="popup-close">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+    </div>
+
+    <div class="popup-content popup-reverse">
+        <div class="popup-side-content">
+            <div v-if="popup.loading" class="popup-loading">
+                <div id="spinner-center">
+                    <div class="lds-ring">
+                        <div></div><div></div><div></div><div></div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="info-field">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> {{translate('InviteInfo')}}
+            </p>
+
+            <div class="field">
+                <label>{{translate('InviteLinkShare')}}</label>
+                <div class="group-input">
+                    <input v-model="invite.link" readonly placeholder="Loading..." v-on:click="copyLink(invite.link)" class="half-option">
+                    <button type="button" class="side-button" v-on:click="copyLink(invite.link)">
+                        <i class="fa fa-clipboard" aria-hidden="true"></i> {{translate('Copy')}}
+                    </button>
+                </div>
+            </div>
+
+            <chat-module :username="profile.username" :room-id="invite.hash"></chat-module>
+        </div>
+
+        <div class="popup-side-menu">
+            <div class="popup-players">
+                <li v-for="(player, index) in invite.players">
+                    <username :value="player"></username>
+                    <span v-if="index === 0" class="you">👑</span>
+                    <button v-if="invite.isOwner && index != 0" v-on:click="inviteKick(player)">Kick</button>
+                </li>
+            </div>
+
+            <div class="invite-settings">
+
+                <li id="spectate-item">
+                    <label>{{translate('Spectate')}} :</label>
+                    <input type="checkbox" id="SpectateCheckbox" name="SpectateCheckbox" value="Spectator:">
+                </li>
+
+                <li v-if="invite.isOwner">
+                    <div class="field-wrap">
+                        <div class="field">
+                            <div class="label-wrap">
+                                <label>{{translate('MapInvite')}}:</label>
+                            </div>
+                            <div class="form-element-wrap">
+                                <select v-model="selectedLobbyMap" @change="selectOption('map', $event.target.value)">
+                                    <option v-for="option in lobbyMaps" :value="option">{{ option }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li v-if="invite.isOwner">
+                    <div class="field-wrap">
+                        <div class="field">
+                            <div class="label-wrap">
+                                <label>{{translate('Mode')}}:</label>
+                            </div>
+                            <div class="form-element-wrap">
+                                <select v-model="selectedMode" @change="selectOption('mode', $event.target.value)">
+                                    <option v-for="option in modes" :value="option">{{ option }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li v-if="invite.isOwner">
+                    <div class="field-wrap">
+                        <div class="field">
+                            <div class="label-wrap">
+                                <label>{{translate('Time')}}:</label>
+                            </div>
+                            <div class="form-element-wrap">
+                                <select v-model="selectedTime" @change="selectOption('time', $event.target.value)">
+                                    <option v-for="option in times" :value="option">{{ option }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </div>
+
+            <button v-if="invite.isOwner" v-on:click="inviteStart()" class="popup-primary-button">
+                {{translate('START')}} <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+
+            <div v-if="!invite.isOwner" class="waiting-owner">
+                {{translate('WaitingOwner')}}
+            </div>
+        </div>
+    </div>
+</div>

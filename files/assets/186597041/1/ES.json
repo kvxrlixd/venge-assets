@@ -1,0 +1,36 @@
+{
+    "header": {
+        "version": 1
+    },
+    "data": [
+        {
+            "info": {
+                "locale": "ES"
+            },
+            "messages": {
+                "Get Premium": "Obtener Premium",
+                "Quests": "Misiones",
+                "Season 1 - Summer Vibes": "Temporada 1 - Vibras de Verano",
+                "Free": "Gratis",
+                "Zoom in": "Acercar",
+                "Zoom out": "Alejar",
+                "Venge Premium": "Venge Premium",
+                "Premium Reward": "Recompensa Premium",
+                "Premium Pass": "Pase Premium",
+                "Uncommon": "Poco Común",
+                "Common": "Común",
+                "Rare": "Raro",
+                "Legendary": "Legendario",
+                "Mythical": "Mítico",
+                "VG coins have been claimed!": "¡Monedas VG reclamadas!",
+                "Stars": "Estrellas",
+                "Locked": "Cerrado",
+                "Claimed!": "¡Reclamado!",
+                "Equiped!": "¡Equipado!",
+                "Equip": "Equipar",
+                "EndsInText1": "Termina en",
+                "EndsInText2": "días"
+            }
+        }
+    ]
+}

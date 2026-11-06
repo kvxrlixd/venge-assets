@@ -1,0 +1,36 @@
+{
+    "header": {
+        "version": 1
+    },
+    "data": [
+        {
+            "info": {
+                "locale": "RU"
+            },
+            "messages": {
+                "Get Premium": "Получить Премиум",
+                "Quests": "Задания",
+                "Season 1 - Summer Vibes": "Сезон 1 - Летние Вибрации",
+                "Free": "Бесплатно",
+                "Zoom in": "Увеличить",
+                "Zoom out": "Уменьшить",
+                "Venge Premium": "Venge Премиум",
+                "Premium Reward": "Премиум Награда",
+                "Premium Pass": "Премиум Пропуск",
+                "Uncommon": "Необычный",
+                "Common": "Обычный",
+                "Rare": "Редкий",
+                "Legendary": "Легендарный",
+                "Mythical": "Мифический",
+                "VG coins have been claimed!": "VG монеты получены!",
+                "Stars": "Звезды",
+                "Locked": "Закрыто",
+                "Claimed!": "Получено!",
+                "Equiped!": "Экипировано!",
+                "Equip": "Экипировать",
+                "EndsInText1": "Заканчивается через",
+                "EndsInText2": "дней"
+            }
+        }
+    ]
+}

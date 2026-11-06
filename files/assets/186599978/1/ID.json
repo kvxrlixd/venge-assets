@@ -1,0 +1,36 @@
+{
+    "header": {
+        "version": 1
+    },
+    "data": [
+        {
+            "info": {
+                "locale": "ID"
+            },
+            "messages": {
+                "Get Premium": "Dapatkan Premium",
+                "Quests": "Misi",
+                "Season 1 - Summer Vibes": "Musim 1 - Suasana Musim Panas",
+                "Free": "Gratis",
+                "Zoom in": "Perbesar",
+                "Zoom out": "Perkecil",
+                "Venge Premium": "Venge Premium",
+                "Premium Reward": "Hadiah Premium",
+                "Premium Pass": "Pass Premium",
+                "Uncommon": "Tidak Biasa",
+                "Common": "Umum",
+                "Rare": "Langka",
+                "Legendary": "Legendaris",
+                "Mythical": "Mitos",
+                "VG coins have been claimed!": "Koin VG telah diklaim!",
+                "Stars": "Bintang",
+                "Locked": "Terkunci",
+                "Claimed!": "Diklaim!",
+                "Equiped!": "Dilengkapi!",
+                "Equip": "Lengkapi",
+                "EndsInText1": "Berakhir dalam",
+                "EndsInText2": "hari"
+            }
+        }
+    ]
+}

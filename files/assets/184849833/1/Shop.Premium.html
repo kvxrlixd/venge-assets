@@ -1,0 +1,22 @@
+<div v-if="tab == 'PremiumShop'">
+    <div id="content" :class="{'focused' : isFocused}">
+        <ul v-if="tab == 'PremiumShop'" class="item-wrapper">
+            <li v-for="item in offers_premium" class="item" v-on:click="showItemOrCrate(item)"  v-on:mouseover="isFocused = true" v-on:mouseleave="isFocused = false">
+                <img class="item-thumbnail" :src="'https://assets.venge.io/' + item.thumbnail">
+                <span class="item-price">
+                    <span v-if="item.original_price > 0" class="original-price">{{numberFormat(item.original_price)}}  VP</span>
+                    <span class="price-value"><img class="coin-icon" :src="getImage('Coin-Icon.png')" alt=""> {{numberFormat(item.premium_price)}} VP</span>
+                </span>
+                <div v-if="item.ads" class="ads-button">
+                    <img class="ads-img" :src="getImage('Ads-Icon.png')">
+                </div>
+
+                <div class="item-header">
+                    <span class="title">{{translate(item.name)}}</span>
+                    <span class="type">{{translate(item.class)}}</span>
+                    <span v-if="item.class != 'Crate'" class="rarity"><span class="square" :class="item.rarity"></span>{{translate(item.rarity)}}</span>
+                </div>
+            </li>
+        </ul>
+    </div> 
+</div>
